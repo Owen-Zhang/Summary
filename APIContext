@@ -1,0 +1,147 @@
+public class APIContext
+    {
+        private static readonly string APICONTEXT = "APIContext";
+
+        private string sellerID;
+        private string requestID;
+        private string requestMsg;
+
+        public bool LogResponse { get; set; }
+        public bool LogRequest { get; set; }
+        public bool IsAuthenticated { get; set; }
+
+        private APIContext()
+        {
+            LogRequest = true;
+            LogResponse = false;
+            IsAuthenticated = false;
+        }
+
+        public string Version
+        {
+            get
+            {
+                return (HttpContext.Current.Request.QueryString["version"] ?? string.Empty).Trim();
+            }
+        }
+
+        public static APIContext Current
+        {
+            get
+            {
+                if (HttpContext.Current == null)
+                    return null;
+                APIContext context = HttpContext.Current.Items[APICONTEXT] as APIContext;
+                if (context == null)
+                {
+                    context = new APIContext();
+                    context.ContentType = context.GetContentType();
+                    context.AcceptType = context.GetAcceptType() ?? ContentFormat.Xml;
+                    HttpContext.Current.Items[APICONTEXT] = context;
+                }
+
+                return context;
+            }
+        }
+
+        public string SellerID
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(sellerID) && HttpContext.Current != null && HttpContext.Current.Request != null)
+                    sellerID = (HttpContext.Current.Request.QueryString["sellerid"] ?? string.Empty).Trim().ToUpper();
+                return sellerID;
+            }
+        }
+
+        public string RequestID
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(requestID))
+                    requestID = UtilTools.GenerateID();
+                return requestID;
+            }
+        }
+
+        public string RequestMessage
+        {
+            get
+            {
+                return requestMsg;
+            }
+
+            internal set
+            {
+                requestMsg = value;
+            }
+        }
+
+        public string ContentType
+        {
+            get;
+            private set;
+        }
+
+        public string AcceptType
+        {
+            get;
+            private set;
+        }
+
+        public NameValueCollection Parames
+        {
+            get { return HttpContext.Current.Request.Params; }
+        }
+
+        private string ConvertType(string type)
+        {
+            if (string.IsNullOrWhiteSpace(type))
+                return type;
+
+            type = type.ToLower();
+            if (Regex.IsMatch(type, "^(text|application)/xml(;charset=utf-8)?$", RegexOptions.IgnoreCase))
+                return ContentFormat.Xml;
+            else if (Regex.IsMatch(type, "^(text|application)/json(;charset=utf-8)?$", RegexOptions.IgnoreCase))
+                return ContentFormat.Json;
+            else
+                return null;
+        }
+
+        private string GetContentType()
+        {
+            string type = ContentFormat.Xml;
+            NameValueCollection headers = HttpContext.Current.Request.Headers;
+            if (headers.HasKeys() && !string.IsNullOrWhiteSpace(headers["Content-Type"]))
+            {
+                type = headers["Content-Type"].Trim();
+                if (string.Compare(HttpContext.Current.Request.HttpMethod, "GET", true) != 0)
+                {
+                    type = ConvertType(type);
+                }
+            }
+            return type;
+        }
+
+        private string GetAcceptType()
+        {
+            string type = ContentFormat.Xml;
+            NameValueCollection headers = HttpContext.Current.Request.Headers;
+            if (headers.HasKeys() && !string.IsNullOrWhiteSpace(headers["Accept"]))
+            {
+                type = headers["Accept"].Trim();
+                type = ConvertType(type);
+            }
+            return type;
+        }
+
+        public Exception SpecialException { set; get; }
+
+        public SellerInfo Seller
+        {
+            get
+            {
+                return SellerDAO.GetSellerInfo(SellerID);
+            }
+        }
+    }
