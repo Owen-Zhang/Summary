@@ -1,0 +1,2 @@
+/*需要注意的一些方法*/
+IsAssignableFrom
