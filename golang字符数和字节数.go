@@ -7,3 +7,4 @@ fmt.Println(len(charray)) //获取元素的个数,结果为6
 //字符数
 i := "abc张"
 fmt.Println(len([]rune(i))) // 3个
+ 
