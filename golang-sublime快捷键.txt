@@ -1,1 +1,2 @@
-Ctr + . + G //看 
+Ctr + . + G //look function define
+
