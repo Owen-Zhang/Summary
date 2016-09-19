@@ -1,2 +1,0 @@
-
-Beyond Compare 3
