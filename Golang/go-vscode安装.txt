@@ -1,0 +1,60 @@
+VSCode / goLang 安装说明
+1: File => Preference => UserSetting 
+{
+    "files.autoSave": "onFocusChange",
+    "go.buildOnSave": true,
+    "go.lintOnSave": true,
+    "go.vetOnSave": true,
+    "go.buildFlags": [],
+    "go.lintFlags": [],
+    "go.vetFlags": [],
+    "go.useCodeSnippetsOnFunctionSuggest": false,
+    "go.formatOnSave": false,
+    "go.formatTool": "goreturns",
+    "go.goroot": "D:\\GoRoot",
+    "go.gopath": "D:\\GoPath"
+}
+
+2: 安装其它的包
+go get -u -v github.com/nsf/gocode
+go get -u -v github.com/rogpeppe/godef
+go get -u -v github.com/golang/lint/golint
+go get -u -v github.com/lukehoban/go-outline
+go get -u -v sourcegraph.com/sqs/goreturns
+go get -u -v golang.org/x/tools/cmd/gorename
+go get -u -v github.com/tpng/gopkgs
+go get -u -v github.com/newhook/go-symbols
+go get -u -v golang.org/x/tools/cmd/guru
+
+3 设置launch.json(放在.vscode文件夹下)
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "remotePath": "",
+            "port": 2345,
+            "host": "127.0.0.1",
+            "program": "${workspaceRoot}",
+            "env": {},
+            "args": [],
+            "showLog": true
+        }
+    ]
+}
+
+4:
+调试工具安装，在命令行运行：
+go get -v -u github.com/peterh/liner github.com/derekparker/delve/cmd/dlv
+
+
+
+------问题---How to fix delve “can't load package: package internal” error
+can't load package: package internal: no buildable Go source files in C:\Coding\Go\src\internal
+and 'go build' working without any errors
+Have to fallback to previous version of delve to get it working. It seems delve broke something or just need to update some things. Seems it enough just to replace dlv.exe in %GOPATH%\bin folder. I'm not sharing my version because it exe, but you can find it or build from sources
+ 
+ I sucessfully executed these steps in go/src/github.com/derekparker/delve after regular go get: git checkout e4c7dfthen go install github.com/derekparker/delve/cmd/dlv – runec Sep 13 at 11:15
