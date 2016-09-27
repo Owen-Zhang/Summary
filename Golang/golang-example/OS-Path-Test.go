@@ -23,7 +23,7 @@ func Test() {
 	//分离路径和运行程序名
     splitFold, fileName := filepath.Split(exePath)
 
-	/*根据相对位置去读取*/
+	/*根据相对位置去读取, 内容: sdfasfasdf2121*/  
 	f2, err := os.OpenFile("147.txt", os.O_RDWR, 0777) //此处可以加上flag，来控制打开要作的动作，Append， Write等
 	if err != nil {
 		fmt.Println(err)
@@ -54,9 +54,14 @@ func Test() {
 
 /*
 result:
-    File Successfull
-    C:\Users\oz3t\AppData\Local\Temp\go-build365055090\command-line-arguments\_obj\exe\main.exe
-    C:\Users\oz3t\AppData\Local\Temp\go-build365055090\command-line-arguments\_obj\exe
-    C:\Users\oz3t\AppData\Local\Temp\go-build365055090\command-line-arguments\_obj\exe\11\22.txt
-    C:\Users\oz3t\AppData\Local\Temp\go-build365055090\command-line-arguments\_obj\exe\ @@@@@ main.exe
+   	File Successfull
+	fasfasd
+	8
+	2121
+	5
+	D:\GoPath\src
+	C:\Users\oz3t\AppData\Local\Temp\go-build045947654\command-line-arguments\_obj\exe\main.exe
+	C:\Users\oz3t\AppData\Local\Temp\go-build045947654\command-line-arguments\_obj\exe
+	C:\Users\oz3t\AppData\Local\Temp\go-build045947654\command-line-arguments\_obj\exe\11\22.txt
+	C:\Users\oz3t\AppData\Local\Temp\go-build045947654\command-line-arguments\_obj\exe\ @@@@@ main.exe
 */
