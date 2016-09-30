@@ -19,6 +19,10 @@ func testJson() {
 	}
 	result, _ := json.Marshal(orderInfo)
 	fmt.Println(string(result))
+	
+	var orderDes Order
+	json.Unmarshall(result, &orderDes)
+	fmt.Println(orderDes)
   
   //json.HTMLEscape()
 }
