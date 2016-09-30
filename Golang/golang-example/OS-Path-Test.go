@@ -6,7 +6,9 @@ import "os/exec"
 import "path/filepath"
 
 func Test() {
-
+//读取环境变量的值
+//os.LookupEnv("")
+  
     //创建文件
     f, _ := os.Create("123.txt")
 	defer f.Close()
