@@ -20,6 +20,7 @@ func testJson() {
 	result, _ := json.Marshal(orderInfo)
 	fmt.Println(string(result))
 	
+	/*反序列化*/
 	var orderDes Order
 	json.Unmarshall(result, &orderDes)
 	fmt.Println(orderDes)
