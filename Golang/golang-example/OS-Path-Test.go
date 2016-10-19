@@ -52,6 +52,23 @@ func Test() {
 	fmt.Println(foldPath)
 	fmt.Println(newJoinPath)
 	fmt.Println(splitFold, "@@@@@", fileName)
+	
+	/*以下没有输出结果*/
+	/*
+	    file, err := os.Open("D:\\1.txt");
+	    if err != nil {
+		fmt.Println("")
+	    }
+	    fileReader := bufio.NewReader(file)
+	    for {
+		bufStr, err := fileReader.ReadString('\n')
+		if err == io.EOF {
+		    break
+		}
+		//对一行字符处理
+		fmt.Println(bufStr)
+	    }
+	*/	
 }
 
 /*
