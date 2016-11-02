@@ -15,3 +15,5 @@ switch (cultureName.ToLower())
 
 Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(cultureName);
 Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(cultureName);
+
+//怎么生成resx 和 design.cs文件请见console程序下面的generateRes类
