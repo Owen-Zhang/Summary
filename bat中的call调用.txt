@@ -1,0 +1,26 @@
+---外部调用 a.bat文件名,  c d为参数
+call a.bat c d
+
+----------a.bat文件内容---------
+echo on
+echo 'Test'
+set arg1=%1
+set arg2=%2
+Test.exe %arg1% %arg2%
+
+--------------------------------
+其中 Test.exe的内容为：
+public class test
+{
+  public int Main(args) {
+    foreach(var arg in args)
+    {
+      Console.WriteLine(arg);
+    }
+  }
+}
+
+-------------------------------
+输出内容为:
+c
+d
