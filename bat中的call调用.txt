@@ -2,8 +2,8 @@
 call a.bat c d
 
 ----------a.bat文件内容---------
-echo on
-echo 'Test'
+echo off
+
 set arg1=%1
 set arg2=%2
 Test.exe %arg1% %arg2%
