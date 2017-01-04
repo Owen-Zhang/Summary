@@ -7,7 +7,7 @@
 :: for %%i in (%str%) do if exist %%i: echo %%i;
 
 
-:: for /d 操作目录，/f 操作文件
+:: for /d 操作目录(只操作一级目录，不会递归查找)，/f 操作文件, /r 递归的查找当前目录和下级目录
 ::输出当前目录 pushd调整当前目录，popd 返回当前目录 for 输出当目录中的所有*.cs文件 ^
 ::echo %cd%
 ::pushd D:\code\ConsoleTest\src\Model
@@ -36,5 +36,52 @@
 ::for /f "usebackq" %%i in ("文件名") do („„) 为了兼容文件名中所带的空格或&
 ::for /f "usebackq" %%i in (`命令语句`) do („„) 
 ::for /f "usebackq" %%i in ('字符串') do („„) 
+
+::查询D盘下所有以exe结尾的程序
+::for /r D:\ %%i in (*.exe) do echo %%i
+
+::输出当前目录中以exe结尾的文件
+::pushd D:\code\ConsoleTest\src
+::for /r %%i in (*.exe) do echo %%i
+
+::%ERRORLEVEL% 系统 返回上一条命令的错误代码。通常用非零值表示错误
+
+::FOR /L %%variable IN (start,step,end) DO command [command-parameters]
+::for /L %%i in (1, 1, 6) do echo %%i
+::输出 1 2 3 4 5 6
+
+:: 一个bat文件中调用另一个bat文件，以及参数的输入
+:: 主bat如下:
+::call test2.bat %USERPROFILE% %cd%
+::echo main program
+::---------------------
+::子bat文件如下
+::@echo off
+::echo come from other bat file
+::echo %1
+::echo %2
+::echo %0  --test2.bat
+
+:: 自定义参数和使用参数 set /p 可以让用户输入参数值
+::set var= test my var: 
+::echo %var%
+
+::判断某两个字符串是否相等，用 if "字符串1"=="字符串2" 会区分大小写
+:: if /i "字符串1"=="字符串2" 的格式 这个是不区分大小写的 
+::判断某两个数值是否相等，用 if 数值1 equ 数值2 语句； 
+::判断某个变量是否已经被赋值，用 if defined str 语句
+::判断上个命令的返回值，if errorlevel 数值 command
+::判断驱动器，文件或文件夹是否存在，if exist filename command 语句
+::if exist d:\123.bat (echo 123.bat文件存在！) else echo 123.bat文件不存在！ 
+
+::set a=
+::if defined a (echo 变量 a 已定义) else (echo 变量 a 没有被定义)
+::当我们用if defined 变量 command 语句判断变量是否被定义时，请注意 变量 为不使用引导符号%的变量名，不能用写为%变量%，否则出错。
+::等于 equ equal 
+::大于 gtr greater than 
+::大于或等于 geq greater than or equal 
+::小于 lss less than 
+::小于或等于 leq less than or equal 
+::不等于 neq no equal
 
 pause 
