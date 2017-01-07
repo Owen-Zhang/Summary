@@ -478,17 +478,6 @@ namespace NE.MPS.Framework.Excel
 }
 
 
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ExcelMapAttribute.cs" company="Newegg" Author="oz3t">
-//   Copyright (c) 2016 Newegg.inc. All rights reserved.
-// </copyright>
-// <summary>
-//   ExcelMapAttribute created at  10/8/2016 3:55:30 PM
-// </summary>
-//<Description>
-//
-//</Description>
-// --------------------------------------------------------------------------------------------------------------------
 using System;
 
 namespace NE.MPS.Framework.Excel
