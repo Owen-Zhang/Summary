@@ -102,4 +102,12 @@
 ::set word=abscdefg
 ::echo %word:~1,10%
 
+::循环调用, 调用完之后再次调用文件
+::（a.bat内容如下)
+::@echo off
+::if exist C:\Progra~1\Tencent\AD\*.gif del C:\Progra~1\Tencent\AD\*.gif
+::a.bat
+
+
+::---http://blog.sina.com.cn/s/blog_4ce992f40102w0o0.html : 使用批处理脚本查是否中冰河-----------------------------------
 pause 
