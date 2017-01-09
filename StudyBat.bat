@@ -84,4 +84,18 @@
 ::小于或等于 leq less than or equal 
 ::不等于 neq no equal
 
+::删除当前目录下的test.txt
+::if exist test.txt (del test.txt) else (echo don't exits)
+
+::从输出从1到10 如果%%i后面加上>nul 表示不显示
+::for /L %%i in (1, 1, 10) do (echo %%i)
+
+:: 标志的使用(:Label, goto label就可以跳转到那)
+:: set /a 指定等号右边的字符串为被评估的数字表达式,就是表示计算,如：set /a z=123+456; 表示为z=579
+
+::使用set赋值时参数和=间不能有空格
+::set a= %path%
+::echo %a%
+
+
 pause 
