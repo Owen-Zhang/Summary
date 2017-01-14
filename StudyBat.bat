@@ -1,5 +1,4 @@
 @echo off 
-
 ::for 的参数，在bat文件中以%%i, 在cmd(命令行中%i)
 
 :: set str= c d e f g h i j k l m n o p q r s t u v w x y z 
@@ -108,6 +107,17 @@
 ::if exist C:\Progra~1\Tencent\AD\*.gif del C:\Progra~1\Tencent\AD\*.gif
 ::a.bat
 
+::copy source 目标盘][路径][目标文件名
+::COPY是COPY的扩展，可以把指定的目录连文件和目录结构一并拷贝，但不能拷贝隐藏文件和系统文件；
+::选用/S时对源目录下及其子目录下的所有文件进行COPY, 如果不指定/E, 是不会拷贝空目录的 
+
+::将一个目录下的所有文件拷贝到另一个文件夹下
+::copy test1\*.* Test3\
+
+::目录不存在就创建
+::if not exist D:\test1 mkdir D:\test1
+::拷贝目录下的所有文件及目录
+::xcopy /s test1 D:\test1
 
 ::---http://blog.sina.com.cn/s/blog_4ce992f40102w0o0.html : 使用批处理脚本查是否中冰河-----------------------------------
 pause 
