@@ -119,5 +119,31 @@
 ::拷贝目录下的所有文件及目录
 ::xcopy /s test1 D:\test1
 
-::---http://blog.sina.com.cn/s/blog_4ce992f40102w0o0.html : 使用批处理脚本查是否中冰河-----------------------------------
+::查看当前所在目录的文件和文件夹
+:: dir 
+::/s：查看当前目录已经其所有子目录的文件和文件夹。 
+::/a：查看包括隐含文件的所有文件。 
+::/ah：只显示出隐含文件。 
+::/w：以紧凑方式（一行显示5个文件）显示文件和文件夹。 
+::/p：以分页方式（显示一页之后会自动暂停）显示。 
+
+::type 文本文件名：显示出文本文件的内容。 
+::netstat 主机：查看主机当前的tcp/ip连接状态，如端口的状态。 
+
+::wmic 删除指定进程(根据进程名称):
+::wmic process where name="qq.exe" call terminate
+::wmic process where name="qq.exe" delete
+
+::wmic 删除指定进程(根据进程PID):
+::wmic process where pid="123" delete
+
+::wmic 创建新进程
+::wmic process call create "C:/Program Files/Tencent/QQ/QQ.exe"
+
+::在远程机器上创建新进程：
+::wmic /node:192.168.1.10 /user:administrator /password:123456 process call create cmd.exe
+
+::关闭本地计算机
+::wmic process call create shutdown.exe
+
 pause 
