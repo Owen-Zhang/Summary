@@ -4,6 +4,7 @@ C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe ../NE.MPS.sln /p:Confi
 
 @pause 
 
+::/v:m
 ::On 32-bit machines they can be found in: C:\Program Files\MSBuild\12.0\bin On 64-bit machines the 32-bit tools will be under: C:\Program Files (x86)\MSBuild\12.0\bin and the 64-bit tools under: C:\Program Files (x86)\MSBuild\12.0\bin\amd64
 ::You can find MSBuild locations by typing in Developer Command Prompt for Visual Studio:
 
