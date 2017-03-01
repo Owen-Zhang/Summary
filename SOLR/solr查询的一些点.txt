@@ -7,3 +7,6 @@ http://10.1.24.178:8030/mkplsolr/order/select?q=*:*&wt=json&indent=true&sort=SON
 &fq=IsB2BComplete:1/true/false/0 --bool 类型
 
 时间查询要以这样的格式： DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+
+fq=OrderNumber:(5454 or 147258) 或者 fq=OrderNumber:(5454+or+147258)
+像sql中的like -> &fq=name:*testt*
