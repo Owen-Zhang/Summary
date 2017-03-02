@@ -10,3 +10,4 @@ http://10.1.24.178:8030/mkplsolr/order/select?q=*:*&wt=json&indent=true&sort=SON
 
 fq=OrderNumber:(5454 or 147258) 或者 fq=OrderNumber:(5454+or+147258)
 像sql中的like -> &fq=name:*testt*
+&fq=-SellerID:"A000" //前面的"-"表示不等于
