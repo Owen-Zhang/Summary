@@ -12,3 +12,9 @@ fq=OrderNumber:(5454 or 147258) 或者 fq=OrderNumber:(5454+or+147258)
 像sql中的like -> &fq=name:*testt*
 &fq=-SellerID:"A000" //前面的"-"表示不等于
 &fq=STATUS:(* NOT 4 NOT 5)
+
+
+-----------------------------------
+"q":"(SellerID:BGDX AND OrderStatus:V) OR (SellerID:BG3Z)"
+http://10.1.24.178:8030/mkplsolr/order/select?q=(SellerID:BGDX+AND+OrderStatus:V)+OR+(SellerID:BG3Z)&wt=json&indent=true
+---------------------------------------------------------------------------------
