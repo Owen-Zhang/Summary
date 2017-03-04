@@ -34,3 +34,13 @@ multivalued的使用
 
 keywords区域，是name、introductionCode、introductionName，无论搜索name、introductionCode、introductionName中任意一个，都能通过keywords搜索出来。
 --------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+This is normally an invalid query:
+datefield:1972-05-20T17:33:18.772Z
+
+These are valid queries:
+datefield:1972-05-20T17\:33\:18.772Z
+datefield:"1972-05-20T17:33:18.772Z"
+-------------------------------------------------------------------------------
