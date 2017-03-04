@@ -18,3 +18,19 @@ fq=OrderNumber:(5454 or 147258) 或者 fq=OrderNumber:(5454+or+147258)
 "q":"(SellerID:BGDX AND OrderStatus:V) OR (SellerID:BG3Z)"
 http://10.1.24.178:8030/mkplsolr/order/select?q=(SellerID:BGDX+AND+OrderStatus:V)+OR+(SellerID:BG3Z)&wt=json&indent=true
 ---------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+multivalued的使用
+
+<field name="name" type="text" indexed="true" stored="true"/>
+<field name="introductionCode" type="text" indexed="true" stored="true"  />
+<field name="introductionName" type="text" indexed="true" stored="true" />
+
+<field name="keywords" type="text" indexed="true" stored="false" multivalued="true" />
+
+<copyField source="name" dest="keywords" />
+<copyField source="introductionCode" dest="keywords" />
+<copyField source="introductionName" dest="keywords" />
+
+keywords区域，是name、introductionCode、introductionName，无论搜索name、introductionCode、introductionName中任意一个，都能通过keywords搜索出来。
+--------------------------------------------------------------------------------
