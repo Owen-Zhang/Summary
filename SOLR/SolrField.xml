@@ -1,0 +1,101 @@
+<field name="SellerID" type="text_general" indexed="true" stored="true" />
+    <field name="SellerName" type="text_general" indexed="false" stored="true"/>
+
+    <!--Order Info-->
+    <field name="SONumber" type="tint" indexed="true" stored="true" required="true"/>
+    <field name="SOType" type="text_general" indexed="true" stored="true" />
+    <field name="IsRejectSO" type="boolean" indexed="true" stored="true"  />
+    <field name="RMAProcessedBy" type="text_general" indexed="false" stored="true" />
+    <!--AddressType: Definition of no longer in use in sellerportal 1.0&2.0 -->
+    <field name="AddressType" type="text_general" indexed="true" stored="true"/>
+    <field name="OrderDate"  type="tdate" indexed="true" stored="true"/>
+    <field name="AcctPostDate"  type="tdate" indexed="true" stored="true"/>
+    <field name="AutoVoidTime" type="tdate" indexed="true" stored="true" />
+    <field name="OrderStatus" type="text_general" indexed="true" stored="true" />
+    <field name="IsAutoVoid" type="boolean" indexed="true" stored="true" />
+    <field name="InvoiceNumber" type="tint" indexed="true" stored="true" />
+    <field name="OrderTotalAmount" type="tdouble" indexed="false" stored="true" />
+    <field name="OrderItemAmount" type="tdouble" indexed="false" stored="true" />
+    <field name="DiscountAmount" type="tdouble" indexed="false" stored="true" />
+    <field name="TaxAmount" type="tdouble" indexed="false" stored="true" />
+    <field name="ShippingAmount" type="tdouble" indexed="false" stored="true" />
+    <field name="ReferenceSoNumber" type="text_general" indexed="true" stored="true" />
+    <field name="CountryCode" type="text_general" indexed="true" stored="true"/>
+    <field name="SourceRMANumber" type="tint" indexed="true" stored="true" />
+    <field name="IsManualIssued" type="boolean" indexed="true" stored="true" />
+    <field name="IsB2BComplete" type="boolean" indexed="true" stored="true" />
+    <field name="OrderPlaceDate"  type="tdate" indexed="true" stored="true"/>
+    <field name="InvoiceDate" type="tdate" indexed="false" stored="true" />
+    <field name="IsInternationalShipping" type="boolean" indexed="true" stored="true" />
+    <field name="IsReplacementSO" type="boolean" indexed="true" stored="true" />
+   
+
+    
+    <!-- Customer Info-->
+    <field name="CustomerNumber" type="tint" indexed="true" stored="true"/>
+    <field name="CustomerName" type="text_general" indexed="true" stored="true" />
+    <field name="CustomerPhoneNumber" type="lowercase" indexed="true" stored="true"/>
+    <field name="CustomerPONumber" type="text_general" indexed="true" stored="true"/>
+    
+    <!--Billing Info-->
+    <field name="PaytermsCode" type="text_general" indexed="false" stored="true" />
+    <field name="BillingContactWith" type="text_general" indexed="false" stored="true"/>
+    <field name="BillingPhone" type="text_general" indexed="false" stored="true"/>
+    <field name="BillingCountry" type="text_general" indexed="false" stored="true"/>
+    <field name="BillingZipcode" type="text_general" indexed="false" stored="true"/>
+    <field name="BillingState" type="text_general" indexed="false" stored="true"/>
+    <field name="BillingCity" type="text_general" indexed="false" stored="true"/>
+    <field name="BillingAddress1" type="text_general" indexed="false" stored="true"/>
+    <field name="BillingAddress2" type="text_general" indexed="false" stored="true"/>
+    <field name="BillingCompanyName" type="text_general" indexed="false" stored="true" />
+    
+    <!--Ship To Info-->
+    <field name="ShipService" type="text_general" indexed="true" stored="true"/>
+    <field name="ShipViaCode" type="text_general" indexed="true" stored="true"/>
+    <field name="ShipToName" type="text_general" indexed="false" stored="true"/>
+    <field name="ShipToPhoneNumber" type="text_general" indexed="false" stored="true"/>
+    <field name="ShipToCountry" type="text_general" indexed="true" stored="true"/>
+    <field name="ShipToZipcode" type="text_general" indexed="true" stored="true"/>
+    <field name="ShipToState" type="text_general" indexed="true" stored="true"/>
+    <field name="ShipToCity" type="text_general" indexed="true" stored="true"/>
+    <field name="ShipToAddress1" type="text_general" indexed="false" stored="true"/>
+    <field name="ShipToAddress2" type="text_general" indexed="false" stored="true"/>
+    <field name="ShipToCompanyName" type="text_general" indexed="false" stored="true" />
+
+    <!--Item Info -->
+    <field name="ItemNumber" type="text_general" indexed="true" stored="true" />
+    <field name="SellerPartNumber" type="text_general" indexed="true" stored="true"/>
+    <field name="ItemManufacturerPartNumber" type="text_general" indexed="true" stored="true"/>
+    <field name="ItemShortTitle" type="text_general" indexed="true" stored="true" />
+    <field name="ItemUPCCode" type="text_general" indexed="true" stored="true"/>
+    <field name="ItemCondition" type="text_general" indexed="true" stored="true"/>
+    <field name="PacksOrSets" type="text_general" indexed="true" stored="true"/>
+    <field name="ItemManufacturerName" type="text_general" indexed="true" stored="true"/>
+    <field name="ItemManufacturerCode" type="text_general" indexed="true" stored="true"/>
+    <field name="IsNeweggFlashItem" type="text_general" indexed="false" stored="true" />
+
+    <!--Order Item Info -->
+    <field name="ItemStatus" type="text_general" indexed="true" stored="true"/>
+    <field name="ItemQuantity" type="text_general" indexed="false" stored="true" />
+    <field name="ItemShipQuantity" type="text_general" indexed="false" stored="true" />
+    <field name="ItemUnitPrice" type="text_general" indexed="false" stored="true"/>
+    <field name="ItemShippingCharge" type="text_general" indexed="false" stored="true"/>
+    <field name="ItemPriceDutyAmount" type="text_general" indexed="false" stored="true"/>
+    <field name="ItemShipDutyAmount" type="text_general" indexed="false" stored="true"/>
+    <field name="ItemPriceTaxAmount" type="text_general" indexed="false" stored="true"/>
+    <field name="ItemShipTaxAmount" type="text_general" indexed="false" stored="true"/>
+    
+    <field name="SpecialComment" type="text_general" indexed="true" stored="true" />     
+    <field name="ExpectShippingDate" type="tdate" indexed="true" stored="true" /> 
+    <field name="SalesChannel" type="text_general" indexed="true" stored="true" /> 
+    <field name="SubSalesChannel" type="text_general" indexed="true" stored="true" /> 
+    <field name="ReqiredSSCCStatus" type="boolean" indexed="true" stored="true" /> 
+    <field name="ItemGroupID" type="text_general" indexed="true" stored="true" /> 
+
+
+    <!--Order Item Ship From Info -->
+    <field name="ItemShipFromWarehouseNumber" type="text_general" indexed="true" stored="true"/>
+    <field name="ItemShipFromCountryCode" type="text_general" indexed="true" stored="true"/>
+
+    <!--version -->
+    <field name="_version_" type="long" indexed="true" stored="true"/>
