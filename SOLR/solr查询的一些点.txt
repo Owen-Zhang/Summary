@@ -45,3 +45,5 @@ datefield:1972-05-20T17\:33\:18.772Z
 datefield:"1972-05-20T17:33:18.772Z"
 datefield:[1972-05-20T17:33:18.772 TO *]
 -------------------------------------------------------------------------------
+
+var result = string.Format("SONumber:('{0}')", string.Join("' OR '", OrderNumberList));
