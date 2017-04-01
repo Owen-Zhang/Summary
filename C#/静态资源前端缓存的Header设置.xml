@@ -1,0 +1,16 @@
+<configuration>
+<location path="jquery-1.3.2.min.js">
+        <system.webServer>
+          <staticContent>
+                <clientCache cacheControlMode="UseExpires" httpExpires="Sun, 29 Mar 2020 00:00:00 GMT"/><!--表示过期时间为2020年3月29号-->
+          </staticContent>
+          <httpprotocol>
+            <customerHeaders>
+              <add name="Last-Modified" value="Web,03 Jan 2016 11:20:10 GMT" />
+            </customerHeaders>
+          </httpprotocol>
+       </system.webServer>
+    </location>
+</configuration>
+
+说明： path 可以设置成文件夹地址
