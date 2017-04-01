@@ -1,0 +1,21 @@
+<system.webServer>
+	<httpProtocol> 
+		<customHeaders> 
+		  <add name="Access-Control-Allow-Methods" value="OPTIONS,POST,GET"/> 
+		  <add name="Access-Control-Allow-Headers" value="x-requested-with"/> 
+		  <add name="Access-Control-Allow-Origin" value="http://192.168.0.103:8082" /> <!--这个是允许的访问地址-->
+		</customHeaders> 
+	</httpProtocol> 
+  
+	<rewrite> <!--资源文件的防盗链-->
+	<rules>
+		<rule name="BlockDirectDownload" enabled="true" stopProcessing="true">
+		  <match url="(?:jpg|png|gif|jpeg)$" ignoreCase="true" />
+		  <conditions>
+			<add input="{HTTP_REFERER}" pattern="^http://(.*\.)?(192.168.0.103:8082)/.*$" negate="true" /> <!--允许的地址-->
+		  </conditions>
+		  <action type="CustomResponse" statusCode="404" />
+		</rule>
+	</rules>
+	</rewrite>
+  </system.webServer>
