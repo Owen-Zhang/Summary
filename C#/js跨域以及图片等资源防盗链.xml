@@ -1,3 +1,6 @@
+http://www.mafutian.net/70.html IIS7在如何利用伪静态规则防止图片盗链
+https://www.iis.net/downloads/microsoft/url-rewrite  "URL Rewrite"组件下载
+
 <system.webServer>
 	<httpProtocol> 
 		<customHeaders> 
