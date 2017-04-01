@@ -27,3 +27,5 @@ Must-revalidate 响应会被重用来满足接下来的请求，但是它必须�
 
 
 ---此文件可以放在根目录下, 也可以放在要控制的目录下, 名为web.config就可以
+
+--这里也有相关配制说明: http://stackoverflow.com/questions/642954/iis7-cache-control
