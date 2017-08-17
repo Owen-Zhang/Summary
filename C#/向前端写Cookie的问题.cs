@@ -17,3 +17,6 @@ HttpContext.Current.Response.AddHeader("Set-Cookie", sb.ToString());
 
 
 //也可以用HttpContext.Current.Response.cookies.add(new cookie());
+
+//http://blog.csdn.net/zhangxinrun/article/details/6427369
+//http://www.cnblogs.com/rookie-26/p/4663899.html
