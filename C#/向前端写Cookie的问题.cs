@@ -20,3 +20,4 @@ HttpContext.Current.Response.AddHeader("Set-Cookie", sb.ToString());
 
 //http://blog.csdn.net/zhangxinrun/article/details/6427369
 //http://www.cnblogs.com/rookie-26/p/4663899.html
+//https://segmentfault.com/a/1190000007243675
