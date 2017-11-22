@@ -22,3 +22,10 @@ http://blog.csdn.net/shenxiaoming77/article/details/51351059
 1: 有Local(相当于db), category(相当于collection) 这样设计主要是考虑到数据量一多可能影响查询性能
 2: 增加一个表就是保存Local 和 category信息, 在查询时和新增都可以显示出来
 3: 当新增一个Local时就创建一个db(此处最好去检查一下是否有相同的db), 增加category时就去增加一个collection(也要判断在当前db下是否有相同的)
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+将MonogoDB加入windows服务
+
+mongod.exe --logpath D:\Program\MongoDB\Log\mongodb.log --logappend --dbpath D:\Program\MongoDB\Data --directoryperdb --serviceName MongoDB -install --auth
