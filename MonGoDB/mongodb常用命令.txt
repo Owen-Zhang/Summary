@@ -29,3 +29,4 @@ http://blog.csdn.net/shenxiaoming77/article/details/51351059
 将MonogoDB加入windows服务
 
 mongod.exe --logpath D:\Program\MongoDB\Log\mongodb.log --logappend --dbpath D:\Program\MongoDB\Data --directoryperdb --serviceName MongoDB -install --auth
+如果不用权限就不要加上--auth
