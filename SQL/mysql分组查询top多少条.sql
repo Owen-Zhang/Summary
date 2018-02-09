@@ -29,4 +29,5 @@ order by new.NewsCategorySysNo,new.Priority desc, new.LastPublishTime DESC
 
 /*
 按NewsCategorySysNo分组，以Priority为优先级, LastPublishTime先后顺序，取三条数据
+多排序字段时有问题
 */
