@@ -1,0 +1,8 @@
+ter the license information spoke | 'q' to quit |'c' to continue |'r' to refresh
+
+
+解决方法：
+输入“1”，按Enter键
+输入“2”，按Enter键
+输入“q"，按Enter键
+输入“yes”，按Enter键
