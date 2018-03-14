@@ -1,0 +1,16 @@
+linux 下面sbin目录中运行某个程序，要./{nginx}格式才行
+修改环境变量 vim /etc/profile
+
+修改conf -> nginx.conf文件中的端口号(默认为80)要改成其它的，80被apach占用了
+
+----------------------------------------------------------
+systemctl stop firewalld            #停止firewall
+systemctl disable firewalld       #禁止firewall开机启动
+
+
+-------------------------------------------------------
+root用户执行 netstat -ntupl     # n表示不查询dns t表示tcp协议 u表示udp协议 p表示查询占用的程序 l表示查询正在监听的程序
+
+linux 防火墙配制地址：/etc/sysconfig/iptables
+
+开机运行一般是在/etc/rc.local文件中加上要运行的命令如：/etc/init.d/nginx start， 同时注意文件夹的权限
