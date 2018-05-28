@@ -1,0 +1,25 @@
+安装 glide: 地址:https://github.com/Masterminds/glide
+安装过后会生成一个exe文件在bin目录中，以后只用这个exe就可以了，它的代码可以不用, 中间要报一个错误，网上有说明怎么改
+
+如果不将glide加入环境变量中, 就使用相对目录去运行
+
+工程的大体目录结构为:
+gopath
+   src
+      home
+        main.go
+      vendor
+        github.com
+          xxx
+      glide.yaml
+      glide.lock
+   bin
+   pkg
+   
+大体流程为：
+1：cd到src目录中 glide create会创建相应的glide.yaml文件
+2：glide get  github.com/imroc/req下载相应的包文件，会下载到vendor目录中, glide.yaml, glide.lock文件中会增加相应的内容
+
+3: 更新代码后可以glide install 会下载相应的包文件到本地的vendor目录中
+4: vendor目录的同级go文件是引用不到vendor目录中的包的, 所以main也要在一个目录中
+5: 应该可以直接改glide.yaml文件中的version去更新包版本
