@@ -1,0 +1,5 @@
+ctrl+alt+< 向上一次光标返回
+ctrl+D 向下复杂当前行
+ctrl+Y 删除当前行
+shift+Alt+^ 将当前行上移
+shift+Alt+【向下键】 将当前行下移
