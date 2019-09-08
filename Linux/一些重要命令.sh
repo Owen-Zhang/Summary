@@ -62,5 +62,32 @@
     find /etc -name init  在/etc文件目录下查找文件名和init的文件(精确查找)
 	find /etc -name *init* 只要文件名中包含init的就返回 *匹配多个字符
     find /etc -name ???init ?匹配单个字符
-	
+13: locate 快速查找
+    -i 不区分大小写
+    locate init* 查找以init开头的文件
+    更新文件数据库 updatedb， 不然新建的文件查找不到
+    不会查找tmp文件夹下面的文件
+
+14: which 查找命令
+    which docker 查找docker的可运行程序路径,如果有别名也会显示出来
+
+15: whereis 查找命令相关的一些路径和帮助信息
+
+16: w 可以查看当前在线的用户
+
+17: ping
+    -c 发几次包 ping -c 3 www.baidu.com
+
+18: last 所有用户登陆的时间信息以及重启时间
+
+19: traceroute 显示数据包到达主机的路径
+
+20: netstat 查看网络
+    -tlun 查看本机开启的端口情况,以及数据发送情况
+    -an 查看本机所有的网络连接
+    -rn 查询路由列表
+
+21: setup 图形化配制工具
+22: service network restart 重启网络
+
 
