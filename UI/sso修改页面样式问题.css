@@ -1,0 +1,32 @@
+1: 系统选择页面: choose
+
+.container 样式上加
+background-color: darkcyan; 这个加背景图片
+height: 100%;
+width: 100%;
+position: absolute;
+
+同时要将body margin:0
+
+
+2: 修改密码页面: changepwd
+将 h1 换成 div  去掉 margin: 3vw 1vw;  加上： padding-top: 36px;
+在container 节点上加上背景图片 height:100%; width:100%
+
+body  margin:0
+
+
+3: errpage 错误页面
+去掉 margin-top: 200px; 
+.main{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background-color: darkcyan 这个换成背景图片
+}
+
+.content {
+padding-top: 250px 增加
+}
+
+去掉body中的margin
