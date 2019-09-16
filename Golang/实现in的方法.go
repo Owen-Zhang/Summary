@@ -13,3 +13,5 @@ func In(haystack interface{}, needle interface{}) (bool, error) {
 
     return false, ErrUnSupportHaystack
 }
+
+// sVal.Index(i).Interface() == needle 数组/slice中不能有 == 比较不了的，只支持基本类型
