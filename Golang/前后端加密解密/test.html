@@ -1,0 +1,26 @@
+<html>
+<header>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="./encrpy.js"></script>
+</header>
+<body>
+	<script type="text/javascript">
+		var publickey = '-----BEGIN test_PublicKey-----'+
+						'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArh1zeT7t+x5xGuTD7SU9'+
+						'2eLF9VPjfLZQcyifkiyQ21p1fpDtVdq0PZ75RkVGpbemhg4UruFFtnlpviSqY8cE' +
+						'+xdf8fYdb69fprEA/nSbymt8mjVqpFvEK3an/Jn1N1/N2am0kR3f8eXURDOmDhTz' +
+						'JVIamkMAHszatpwusnoNpgXKIZ2t3Ler3fqBnx9pjMV0tUlZfutb80dIwPODNkgk' +
+						'9DVF5sm1IHLDRFTGDfVyFrA/YP9lF3yTJGvk/SuTMrCDvuW1jDdP9dpkgyt+Zpvz' +
+						'IuKHEn7p7C2l1pc68i7lAB39wVhurUzpYhGKCrHvqvncXcBvNcR7Bh73WKQJpqLg' +
+						'WQIDAQAB'+
+						'-----END test_PublicKey-----';
+		function aa() {
+			var encrypt = new JSEncrypt();
+			encrypt.setPublicKey(publickey);
+			var encrypted = encrypt.encrypt("abcdefghjklmn");
+			console.log(encrypted);
+		}
+		aa();
+	</script>
+</body>
+</html>
