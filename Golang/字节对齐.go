@@ -21,5 +21,5 @@ type Age struct {
   ptr *int64  //8个字节 指针在64位系统占8个字节,32位系统中占4个字节
   str  string //16个字节  底层是一个指针一个int 类型
   map[string]int16  //8个字节  可以理解为一个指针的大小
-  i  interface{}  //16个字节
+  i  interface{}  //16个字节, 两个指针
 }
