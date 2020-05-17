@@ -23,3 +23,10 @@ type Age struct {
   map[string]int16  //8个字节  可以理解为一个指针的大小
   i  interface{}  //16个字节, 两个指针
 }
+
+
+type xxx struct {
+ ddd int
+ fff int
+}
+unsafe.sizeof(xxx{})  //查看类型占用的字节数
