@@ -1,0 +1,10 @@
+利用pstack 和 strace分析程序在哪里耗时？
+
+ps	查找进程的pid 如：ps -aux | grep nws     
+pstack	打印进程或者线程的栈信息 pstack   171211(进程id)     
+strace 	统计每一步系统调用花费的时间  
+		strace -o output.txt -T -tt -e trace=all -p 171264
+		nws进程中的171264线程进行系统调用跟踪， 将输出的信息保存在output.txt中
+		
+
+文章地址: https://blog.csdn.net/lotluck/article/details/77943152
