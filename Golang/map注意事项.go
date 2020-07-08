@@ -2,7 +2,7 @@
 2、尽量少用map或map的value尽量少为指针，太多的指针类型会造成GC扫描时间的增加；
 3、若是用map用作缓存存储，当每次只更新部分，更新的key若是偏差较大，会有可能造成内存逐渐增长而不释放的问题，可以通过定时拷贝map的方式来解决
 4、释放map所占的内存 则通过map=nil
-5、非线程安全
+5、非goroutine安全,所以在有多个gorountine对map进行写操作是会panic, 多gorountine读写map是应加锁（RWMutex）
 6、定义map后，可以读(返回零值),写数据报错
 7、map初始化 make(map[int]string), map[int]string{}, 其中make后面的数字是key/value个数(相当于len(map))
 8、map的key最好使用int,string
