@@ -7,6 +7,7 @@
    --link db:mysql 链接另一个容器(db)取别名为mysql
    -p 8080:80 80为容器端口,8080为此应用映射到宿主机的端口(此端口外网可以访问)
    --restart=always 始终自启动
+   --net=none 设置容器不使用网络
    
 2: docker stats containerid 
    查看容器内存、cpu、网络使用情况
@@ -20,3 +21,9 @@
    -t docker build -t runoob/ubuntu:v1 .  (runoob/ubuntu镜像名称、v1版本号)
    --no-cache 创建镜像的过程不使用缓存；
    --force-rm 设置镜像过程中删除中间容器
+
+5: docker port containerid(容器别名也可以)
+   此容器映射的端口地址信息
+
+6:删除所有的容器
+  docker rm -f $( docker ps -a -q )
