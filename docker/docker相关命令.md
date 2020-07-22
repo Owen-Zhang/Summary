@@ -9,6 +9,7 @@
    --restart=always 始终自启动
    --net=none 设置容器不使用网络
    -v /var/sum:/var/sum 宿主机的目录与容器目录相到映射(volumn),前面的为宿主机目录
+   -m, --memory=256m， 指定容器的内存上限
    
 2: docker stats containerid 
    查看容器内存、cpu、网络使用情况
@@ -28,3 +29,6 @@
 
 6:删除所有的容器
   docker rm -f $( docker ps -a -q )
+
+7: docker network ls
+   查看docker的网络
