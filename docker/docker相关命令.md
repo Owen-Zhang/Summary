@@ -8,6 +8,7 @@
    -p 8080:80 80为容器端口,8080为此应用映射到宿主机的端口(此端口外网可以访问)
    --restart=always 始终自启动
    --net=none 设置容器不使用网络
+   -v /var/sum:/var/sum 宿主机的目录与容器目录相到映射(volumn),前面的为宿主机目录
    
 2: docker stats containerid 
    查看容器内存、cpu、网络使用情况
