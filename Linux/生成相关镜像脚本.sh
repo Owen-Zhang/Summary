@@ -23,7 +23,7 @@ if [ -d "/opt/staticmanagement/logs/" ]; then
         rm -rf /opt/staticmanagement/logs
 fi
 
-\cp conf/app.conf /opt/staticmanagement/conf/
+cp conf/app.conf /opt/staticmanagement/conf/
 
 #删除运行中的容器
 containerid=`docker ps -a | grep static | awk '{print $1}'`
