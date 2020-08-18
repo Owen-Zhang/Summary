@@ -1,5 +1,6 @@
 ###### 1 原始命令
 flushall 清除所有的key
+type k1 可以查看k1的类型
 
 ##### string相关操作(包括bitmap)
 help @string 可以查看string 相关的命令
@@ -72,6 +73,23 @@ hmset zhang name "test" age 28
           用户页面(好友数据、粉丝数)
 
 
-##### set 无序，不重复
+##### set 集合 (无序，不重复)
+help @set
+
+sadd database mysql redis mongo ## 向集合中增加数据
+sadd database redis
+smembers database ## 返回二个数据(mysql redis)
+srem database redis ## 将redis移除
+spop database 2  ##返回两个数据,同时将其移除
+srandmember database 2 ##随机返回两个数据,不移除集合中的数据 
+sinter k1 k2  ##返回k1与k2的两个交集
+sdiff k1 k2     ##返回k1 k2中的差集
+sunion k1 k2    ##返回k1 k2的并集
+sismember database redis ## redis是否存在database set中，存在返回1 否则返回0
+
+
+
+###### 有序集合 sorted_set
+
 
 视频地址: https://www.bilibili.com/video/BV13z411b7mU?p=4
