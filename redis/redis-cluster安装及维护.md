@@ -29,7 +29,7 @@ redis-cli --cluster create 192.168.0.109:6379 192.168.0.110:6379 192.168.0.111:6
 ./redis-cli -c -h 192.168.0.109 -p 6379
 登陆到集群的某个节点 -c以集群的方式登陆(否则只能操作当前机器) -h -p 分别指定host和端口
 
-9 查看集群信息
+9 查看集群信息(需要登陆某个客户端之后)
 cluster nodes 查看节点
 cluster info 查看集群信息
 
@@ -42,6 +42,7 @@ redis-cli --cluster help --这个集群管理的一些帮助命令
 redis-cli --cluster create 增加节点
 redis-cli --cluster check 检查集群情况
 redis-cli --cluster info 查看master节点信息以及keys的分布情况
+redis-cli --hotkeys 查看热点key
 .....
 ```
 
