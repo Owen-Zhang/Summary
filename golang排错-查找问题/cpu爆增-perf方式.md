@@ -13,7 +13,7 @@
 
 ###### perf stat ./testgo (testgo是应用程序) 结束后会统计相关的信息
 ```
-11,424.63 msec task-clock          #    0.872 CPUs utilized(cpu占用率)          
+            11,424.63 msec task-clock     #    0.872 CPUs utilized(cpu占用率)          
              1,490      context-switches  #    0.130 K/sec                  
                  0      cpu-migrations    #    0.000 K/sec                  
              1,367      page-faults       #    0.120 K/sec                  
