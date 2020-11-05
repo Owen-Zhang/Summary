@@ -35,6 +35,9 @@
    while read str; do
      echo $str
    done < readme.md
+4: grep 使用
+   grep -v 反向查找
+   ps aux | grep mysql | grep -v grep  #找出mysql进程相关信息
 ```
 
 ##### 命令链接符
@@ -104,10 +107,9 @@ sh -x test.sh
      line2="1,2,3,4,5,6";
      arr2=(${line2//,/ }); # 以(,)分隔,}前面的空格不能少
      echo ${arr2[1]}       # 2
-     
+
      ###注意下面这种方式
      echo ${line// /}   #这个是替换，就是将字符中的空格去掉而已
-
 ```
 
 ##### 函数
@@ -159,4 +161,73 @@ sh -x test.sh
    done
    echo $sum
 
+3: 循环控制
+   break n    #n表示跳出循环的次数,如果省略n表示跳出整个循环
+   continue n #n退到n层继续循环，如果省略n表示路过本次循环进入下一次循环
+   exit n     #退出当前的shell程序,并返回n
+   return     #函数中用到
+```
+
+##### 流程控制
+```
+1: 符号说明
+   (()) 数值比较、运算
+   [[]] 条件测试、支持正则
+   $(()) 整数运算
+   $[] 整数运算
+   
+2: 文件测试表达式
+   -d 文件存在并且为目录 # [ -d /root ]; [ ! -d /root ] 判断目录是否存在
+   -f 文件存在并且为普通文件
+   -e 文件存在,不管是目录还是普通文件
+   -s 文件存在并且大小不为0
+   -r 文件存在并且可读; -w可写; -x可运行 -L链接文件 
+
+3: 整数比较操作符
+   [] 和 test    ||         [[]] 和 (())
+      -eq                      == =
+      -nq                      !=
+      -gt                      >
+      -ge                      >=
+      -lt                      <
+      -le                      <=
+```
+
+##### 分支语句if
+```
+1: 单分支
+if [ 条件表达式 ]; then 
+   业务处理
+fi
+
+2: 双分支
+if [ 条件表达式 ]; then 
+   业务处理
+else
+   业务处理
+fi
+
+3:多分支语句
+if [ 条件表达 ]; then
+   业务处理
+elif [ 条件表达式]; then
+   业务处理
+else
+   业务处理
+fi
+
+#######################
+查找某个进程的pid
+#######################
+mysql=$(ps aux | grep mysql | grep -v grep)
+if [[ -n $mysql ]]; then
+  name=${mysql:0:5}
+  if [ $name == "mysql" ]; then
+   arr=(${mysql// / })
+   echo ${arr[1]}
+  fi
+else
+  echo “mysql not exists”
+fi
+############################## 
 ```
