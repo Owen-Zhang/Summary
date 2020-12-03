@@ -47,7 +47,7 @@
 1：http://sourceforge.net/projects/rsyncforwindows/ #下载地址
 2：安装程序，设置环境变量
 3: 运行脚本:
-   rsync  -vzrtopg --progress --delete --password-file=./golang.secrets ./ root@192.168.0.109::home
+   rsync --exclude ".git" --exclude "Log"  -vzrtopg --progress --delete --password-file=./golang.secrets ./ root@192.168.0.109::home
    文件路径只能用相对路径
 
 ```
