@@ -1,5 +1,6 @@
 安装mysql时，要删除机子上的mariadb
 
+``` sh
 #linux启动mysql
 service mysql start
 
@@ -15,6 +16,7 @@ service mysql stop
 #CREATE USER 'zpc'@'%' IDENTIFIED BY ''; 
 #CREATE USER 'zpc'@'%'; 
 CREATE USER 'username'@'host' IDENTIFIED BY 'password'; 
+```
 
 
 地址：https://www.cnblogs.com/logaa/p/6791819.html 启动服务后，可以试mysql

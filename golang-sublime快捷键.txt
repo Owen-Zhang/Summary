@@ -1,2 +1,0 @@
-Ctr + . + G //look function define
-

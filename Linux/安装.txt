@@ -1,4 +1,4 @@
-ter the license information spoke | 'q' to quit |'c' to continue |'r' to refresh
+enter the license information spoke | 'q' to quit |'c' to continue |'r' to refresh
 
 
 解决方法：

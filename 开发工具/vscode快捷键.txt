@@ -1,9 +1,0 @@
-打开一个新窗口 Ctrl+Shift+N
-新建文件 Ctrl+N
-
-上下移动一行 Alt+Up 或 Alt+Down
-移动到文件结尾 Ctrl+End
-移动到文件开头 Ctrl+Home
-删除光标右侧的所有字 Ctrl+Delete
-删除当前行 Ctrl+D
-查找替换 Ctrl+H

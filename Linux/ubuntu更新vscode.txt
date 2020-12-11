@@ -1,3 +1,0 @@
-1: 先下载最新版本(ubuntu 下载 *.deb) 下载文件为: c.deb
-
-2: sudo dpkg -i c.deb 安装更新

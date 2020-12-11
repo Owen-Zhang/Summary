@@ -35,9 +35,7 @@
    while read str; do
      echo $str
    done < readme.md
-4: grep 使用
-   grep -v 反向查找
-   ps aux | grep mysql | grep -v grep  #找出mysql进程相关信息
+
 ```
 
 ##### 命令链接符
@@ -130,7 +128,7 @@ sh -x test.sh
 ```
 
 ##### 循环结构
-```
+``` sh
 1: for 语法结构
    for i in {1..10} #在/root目录下创建10个demo目录
    do
@@ -160,6 +158,17 @@ sh -x test.sh
       let ++a
    done
    echo $sum
+
+   #实例 查找某个进程并kill掉
+   ps -ef | grep mysql | grep -v grep | while read line
+   do
+      name=${line:0:5}
+      if [ $name == "mysql" ]; then 
+         arr=(${line// / }) #以空格分开 
+         #echo ${arr[1]}
+         kill -9 ${arr[1]} #如果是以服务的方式运行的话，结束了又会启动的 systemctl stop mysqld才行
+      fi
+   done
 
 3: 循环控制
    break n    #n表示跳出循环的次数,如果省略n表示跳出整个循环
@@ -252,20 +261,17 @@ bb=`expr 4 + 5 ` #数字要运算就加上expr
    ifconfig | grep broadcast | awk '{print $6}' #列数是从1开始
 
 ##### 5 sed 替换内容等(还有很多有用的信息)
+``` sh
    ff="adddd:456232563" echo $ff | sed 's/adddd://g'  #将adddd:替换成空  sed 's/adddd:/+/g' 将adddd:替换成+
    ll | awk '{print $9}' | grep -v '^$' #输出当前目录下的文件名(去除空行)
    sed 's/^/& /' #在行前添加空格
-   
-##### 6 grep相关操作
-	-i 忽略大小写
-	-o 只输出匹配到的部分(而不是整个行)
-	-v 反向选择，即输出没有没有匹配的行  grep -v '^[a-zA-Z].*' #输出不是以字母开始的行
-	-c 计算找到的符号行的次数
-	-n 顺便输出行号
+```
 
 ##### 7 if 双括号法
+```
    if [[ $score == 0 || ($score > 4 && $score < 8) ]]; then
-   
+```
+
 ##### 8 符号$后的括号
 	#: ${a} 变量a的值, 在不引起歧义的情况下可以省略大括号
 	#: $((exp)) 和`expr exp`效果相同, 计算数学表达式exp的数值,三目运算符和逻辑表达式都可以计算
@@ -324,17 +330,43 @@ sed -i "s/nologin1/nologin/g" passwd #将passwd文件中的nologin1改为nologin
 
 ##### 13 grep 文件内容查找
 ``` sh
-grep -i "hello" /etc/passwd #查找passwd文件中包含hello的数据行, 不区分大小写,可以同时查询多个文件，用空格隔
-开就可以了
-grep -n "hello" /etc/passwd #查找passwd文件中包含hello的数据行,并显示行号
-grep -o 					#只显示匹配到的内容
-grep -v                     #不包括某些规则的数据
+	-c 计算找到的符号行的次数
+   grep -v '^[a-zA-Z].*' #输出不是以字母开始的行
+   ps aux | grep mysql | grep -v grep  #找出mysql进程相关信息
+   grep -i "hello" /etc/passwd #查找passwd文件中包含hello的数据行, 不区分大小写,可以同时查询多个文件，用空格隔
+   开就可以了
+   grep -n "hello" /etc/passwd #查找passwd文件中包含hello的数据行,并显示行号
+   grep -o 					#只输出匹配到的部分(而不是整个行)
+   grep -v              #反向选择，即输出没有没有匹配的行
 ```
 
 ##### 14 curl 访问网络数据
 ``` sh
 curl -s http://www.baidu.com | grep -o "京ICP证[0-9]*" | grep -o "[0-9]*" #-s:不显示统计信息; -o:只显示匹配到的结果
 
+curl https://www.baidu.com #发出get请求
+
+#-b 参数 发送cookie
+curl -b 'add=c;fff=g' https://www.baidu.com #多个cookie用;分隔
+curl -b t.txt https://www.baidu.com #将一个文件中的cookie传入
+
+#-c 参数 保存response cookie
+curl -c t.txt https://www.baidu.com #将服务器返回的cookie保存到t.txt中
+
+#-d 参数 post提交数据
+curl -d 'ddd=dfff&g=dddfgg' https://www.baidu.com # post提交相关参数
+curl -d '@t.txt' https://www.baidu.com # 提交一个文件的内容到服务器
+$ curl -d '{"login": "emma", "pass": "123"}' -H 'Content-Type: application/json' https://google.com/login
+
+#--data-urlencode 参数 urlencode编码提交数据
+curl --data-urlencode 'ddd=dfff&g=dddfgg' https://www.baidu.com # post提交相关参数
+
+#-e 参数用来设置 HTTP 的标头Referer，表示请求的来源。
+curl -e 'http://www.sina.com' https://www.baidu.com 
+
+#-F 参数用来向服务器上传二进制文件。
+curl -F 'file=@t.png' https://www.baidu.com # 
+上面命令会给 HTTP 请求加上标头Content-Type: multipart/form-data，然后将文件photo.png作为file字段上传
 ```
 
 ##### 15 awk使用
@@ -343,6 +375,291 @@ ll `which awk` #显示which awk所在路径的信息
 
 ```
 
+##### 16 ll/ls 列出文件和目录信息
+``` sh
+   -a 列出所有的文件
+   -h 文件大小显示出 k, m 
+   -i 文件数字标识
+   -d 只显示指定目录的信息
+```
 
+##### 17 mkdir 创建目录
+```
+   -p 递归创建目录，上级目录不存在就创建
+```
 
+##### 18 cp 复制文件或者目录
+``` sh
+   -r 复制目录
+   -f 如果有相同就覆盖
+   -p 保持文件的属性不变
+   cp ./a.txt ./b.txt /root 将a.txt和b.txt复制到root目录下(复制多个文件)
+   cp 过去还可以改名
+   \cp -rf /aaa /test  #将aaa目录复制到/test目录下,存在就覆盖覆盖
+```
 
+##### 19 mv 移动文件或者改名
+
+##### 20 cat 查看文件
+``` sh
+   -n 可以看到行号
+   cat -n /etc/passwd | more #显示行号并且分页显示
+```
+
+##### 21 less 查看文件内容 
+```  sh
+   less /etc/services # 会一屏一屏的显示, 对显示内容特别的文件特别好
+   可以向下看，向上看
+   还可以查找 /a  查找a字符 按n(next)表示查看下一次查找的位置
+   按q退出
+```
+
+##### 22 head 查看文件的前几行
+``` sh
+   -n 7 #查看前7行 
+   head -n 8 /etc/passwd # 查看文件的前8行
+```
+
+##### 23 tail 查看文件末位的几行
+``` sh
+   -n 7 #查看末位的7行
+   -f   #动态显示文件末尾内容
+```
+
+##### 24 chmod 修改文件的权限 (所有者和 root 可以修改)
+```
+   + 增加权限，- 减少权限，= 指定权限 
+   chmod {ugoa} {+-=} {rwx} u:所有者,g:所属组,o:其他, a:所有
+   权限数字: r:4, w:2, x:1 如：rwxrw-r-- : 764
+   例子：chmod 776 /etc/hosts 
+   -R 递归修改
+   (目录w权限) 可以删除和创建文件, 注意: 文件的w权限只有写权限
+```
+
+##### 25 chown 修改文件的所有者
+```
+   chown zhangxx ./a.txt 将当前目录的文件a.txt的所有者改成zhangxx
+```
+
+##### 26 chgrp 修改文件的所属组
+```
+   chgrp 组名 目录名或者文件名
+```
+
+##### 27 find 查找文件
+``` sh
+-iname 根据文件名查找 不区分大小写
+	-name 根据文件名查找,区分大小写 # find / -name mysql 在全文件中查找mysql相关的文件或文件夹
+	-size 文件在大小, +大于多少 -小于多少 如: find /etc -size +2600(这个数据块) 1kb=2个数据块
+	-user 查找所有者的文件
+	-group 查找所属组的文件
+	-mmin -5 查找文件内容5分钟内被修改过的文件 +超过多少时间，-在多少时间内
+	-type f(文件) d(目录) l(软链接) 
+	-exec 查找后做什么事情如：find /etc -name *init -exec ll {} \;   /*其中{} \; 是固定格式 */
+	查看文件后而且显示出文件的详细信息
+	-o 表示多个条件or 满足其中一个就可以
+	-a 表示多个条件合在一起(and) 如：find /etc -size +2603 -a -size -45612389 文件大小在某个区间内的文件
+	
+    find /etc -name init  #在/etc文件目录下查找文件名和init的文件(精确查找)
+	 find /etc -name *init* #只要文件名中包含init的就返回 *匹配多个字符
+    find /etc -name ???init #?匹配单个字符
+```
+
+##### 28 locate 快速查找
+```
+    -i 不区分大小写
+    locate init* 查找以init开头的文件
+    更新文件数据库 updatedb， 不然新建的文件查找不到
+    不会查找tmp文件夹下面的文件
+```
+
+##### 29 which, whereis 查找命令
+``` sh
+which docker  #查找docker的可运行程序路径,如果有别名也会显示出来 
+whereis docker #查找命令相关的一些路径和帮助信息
+```
+
+##### 30 w 
+```
+可以查看当前在线的用户
+```
+
+##### 31  ping
+``` sh
+ping -c 3 www.baidu.com #-c 发几次包 
+```
+
+##### 32  last
+```
+所有用户登陆的时间信息以及重启时间
+```
+
+##### 33  traceroute
+```
+显示数据包到达主机的路径
+```
+
+##### 34 netstat 查看系统的网络连接状态、路由信息、接口
+``` sh
+    -atlunp 查看本机开启的端口情况(活动的),以及数据发送情况
+    -an 查看本机所有的网络连接
+    -rn 查询路由列表
+    -a: 显示所有连线中的Socket,已建立的连接（ESTABLISHED），也包括监听连接请（LISTENING）
+    -n : 表示不将ip和端口转换成域名和服务名
+    -t : 查看tcp相关信息
+    -u : 查看udp相关信息
+    -p : 显示pid和进程名
+    -l : 监听
+    -s: 能够按照各个协议分别显示其统计数据
+    -e: 本选项用于显示关于以太网的统计数据。它列出的项目包括传送的数据报的总字节数、错误数、删除数、数据报的数量和广播的数量。这些统计数据既有发送的数据报数量，也有接收的数据报数量。这个选项可以用来统计一些基本的网络流量
+```
+
+##### 35 service network restart 重启网络
+
+##### 36 vim 相关命令
+``` sh
+    命令模式:
+    :set nu 加上行号
+    gg 到第一行
+    G  到最后一行
+    :n 到某一行
+    $　移动行尾
+    0  移动到行首
+    x 删除光标所在处的字符
+    dd 删除光标所在行,也是剪切光标所在行
+    D 删除光标到行尾
+    :100,115d 删除100行到115行的数据
+    yy 复制当前行的数据
+    p 粘贴数据，经常和yy结合使用
+    2yy 复制2行数据
+    ndd 剪切多行数据
+    u 取消上一次操作
+
+    /string 搜索要找的字符串
+    n 找下一个要查找的结果
+
+    :set ic 不区分大小写
+    :set noic区分大小写
+    :r /etc/hosts 将/etc/hosts中的内容导入到当前文件中
+    :!whereis docker 在不退出当前vim的情况下，运行其它命令
+    :r !ls -l /etc 将后面命令运行的结果写入当前文件中
+
+    :1,6s/^/#/g 将1到6行注解掉
+    :1,6s/^#//g 将1行到6行的以#号开头的#号去掉, 不加^就会去掉行中所有的#, 说白了就是替换
+```
+
+##### 37 touch 
+``` sh 
+   touch {1..100}.txt #创建 1.txt 到 100.txt文件
+```
+
+##### 38 查看centos 版本
+``` sh
+cat /etc/redhat-release
+```
+
+##### 39 查看linux内核信息
+``` sh
+uname -a # 显示系统名、节点名称、操作系统的发行版号、内核版本等等
+```
+
+##### 40 系统日志
+``` sh
+/var/log #下面有很多的日志信息，如messages等
+```
+
+##### 41 tcpdump 抓取tcp信息
+``` sh
+tcpdump -nn -i ens33 port 80 #抓取ens33网卡上,端口为80的流入流出数据
+#port 指定端口
+#-i 监视指定网络接口的数据包 如果不指定网卡，默认tcpdump只会监视第一个网络接口
+#-X(大写) 显示交互的内容
+
+tcpdump host baidu ## host只抓取某个host的包数据(也可以用ip)
+tcpdump -i eth0 src host hostname ## 抓取hostname发出的数据包(发出)
+tcpdump -i eth0 dst host hostname ## 抓取发到hostname的数据包(接收)
+tcpdump tcp port 23 and host 210.27.48.1 ## 可以用and 或者or关联多个条件, tcp/udp 指抓取哪种类型数据
+```
+
+##### 42 设置dns服务器
+``` sh
+#路径 /etc/resolv.conf 增加相应的dns服务器
+nameserver 192.168.106.189
+nameserver 192.168.106.190
+```
+
+##### 43 配制ip、防火墙
+```
+路径： /etc/sysconfig/network-scripts/ #ip
+      /etc/sysconfig/iptables-config  #防火墙
+```
+
+##### 44 service 开机启动程序设置
+``` sh
+#1: 服务一般放在 /usr/lib/systemd/system目录，也可能在/etc/systemd/system
+#2: 新增一个文件如: aa.service 内容如下
+#aa.service文件内容如下：
+[Unit]
+Description=mgrweb_sso
+Requires=
+After=
+
+[Service]
+EnvironmentFile=~/.bashrc
+PIDFile=/var/run/mgrweb_sso.pid
+ExecStartPre=rm -f /var/run/mgrweb_sso.pid
+WorkingDirectory=/home/sso_v3/mgrserver/bin
+ExecStart=/home/sso_v3/mgrserver/bin/mgrweb_sso run -r zk://192.168.0.101 -c v3
+Restart=on-failure
+RestartSec=50s
+
+[Install]
+WantedBy=multi-user.target
+
+#3 设置开机运行: systemctl enable aa
+#4 启动服务: systemctl start aa
+#5 停止服务: systemctl stop aa
+#6 直接停止运行: systemctl kill aa.service
+#7 重启服务：  systemctl restart aa
+
+#8: [Service] 区块：启动行为
+ExecReload字段：重启服务时执行的命令
+ExecStop字段：停止服务时执行的命令
+ExecStartPre字段：启动服务之前执行的命令
+ExecStartPost字段：启动服务之后执行的命令
+ExecStopPost字段：停止服务之后执行的命令
+```
+
+##### 45 shell命令行参数的相关说明
+``` sh
+$# 是传给脚本的参数个数
+$0 是脚本本身的文件名
+$1 是脚本后接的第一个参数
+$2 是脚本后接的第二个参数
+$@ 是传给脚本的所有参数列表，"$1" "$2" "$3" … "$n"
+$* 是以一个单字符串显示传给脚本的所有参数，"$1 $2 $3 … $n"
+$$ 是脚本运行的当前进程ID号
+$? 是最后运行命令的结束状态码，0表示没有错误，其他表示有错误
+
+shift 造成参数变量号码偏移，第二个参数变为$1，以此类推。
+
+#echo $@ 多个参数时 动态判断
+ for i in $@
+ do  
+ if [ $i = "oci" ]; then 
+ 	echo "oci"
+ fi;
+ if [ $i = "prod" ]; then 
+ 	echo "prod"
+ fi
+ done  
+
+```
+
+##### 46 ubuntu更新vscode
+``` sh
+#1 先下载最新版本(ubuntu 下载 *.deb) 下载文件为: c.deb
+
+#2 安装更新 
+sudo dpkg -i c.deb #c.deb文件名
+```
