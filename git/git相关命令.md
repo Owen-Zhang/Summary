@@ -57,3 +57,8 @@ git init test #本地创建test文件夹并加上git相关的初始化信息
 git remote add origin http://github.com/Owen-Zhang/test.git #将本地仓库和线上仓库关联,origin是git默认远程标识,也可以改成其它
 ```
 
+
+##### 8 将本地commit后的代码推到远程
+``` sh
+git push -u origin master #将本地代码推到远程的master分支上,origin是git remote关联时取的名字
+```
