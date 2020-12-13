@@ -1,20 +1,27 @@
-###### git放弃本地文件修改
+##### 约定
+``` 
+版本号 就是sha1码(4fec36f)
 ```
-1: 未使用git add 缓存代码 
-   git checkout . 可以返原已修改的内容, 但新增的文件不起作用，不会自动删除
-   git checkout -- filename 放弃某个文件(filename:文件名), 可以多个文件一起,用空格隔开就可以了
 
-2: 已使用git add 缓存代码，未使用git commit  
-   git reset HEAD filename -- 将某个提交commit 的文件返回到 git add 之前
-   git reset HEAD --将所有提交commit的文件返回到git add 之前
-   返回到git add 之前，要将修改丢掉就用git checkout
+###### git放弃本地文件修改
+``` sh
+#1: 未使用git add 缓存代码 
+   git checkout . #可以返原已修改的内容, 但新增的文件不起作用，不会自动删除
+   git checkout -- filename #放弃某个文件(filename:文件名), 可以多个文件一起,用空格隔开就可以了
 
-3: 已经用 git commit 提交了代码
-   git reset head~1 将上一次提交的代码返回到git add 之前(此常用), 1可以是n
-   git reset --soft head~1 将上一次提交的代码返回到git add 之后，git commit 之前的状态
-   git reset --hard head~1 将上一次提交的代码全部删除,直接返回到修改之前的代码状态(此方法慎用)
+#2: 已使用git add 缓存代码，未使用git commit  
+   git reset HEAD filename # 将某个提交commit 的文件返回到 git add 之前
+   git reset HEAD #将所有提交commit的文件返回到git add 之前
+   #返回到git add 之前，要将修改丢掉就用git checkout
 
-   git reset --hard 版本号 #一次性回退到某个版本
+#3: 已经用 git commit 提交了代码
+   git reset head~1 #将上一次提交的代码返回到git add 之前(此常用), 1可以是n
+   git reset --soft head~1 #返回到上次git add 之后，git commit 之前的状态
+   git reset --hard head~1 #直接返回到上次commit的版本
+
+   #可以跳转到任务一个版本(就是那个sha1码)
+   git reset --hard 版本号 #一次性回退到某个版本(commit之后的版本)
+   git resset 版本号 #返回到某个版本号未add 之前的编辑状态
 ```
 
 ##### 2日志内容查看
@@ -88,4 +95,16 @@ dir/**/*.txt #排除dir目录下任意目录下的txt文件
 ##### 10 拉取
 ``` sh
 git pull origin master:localbranch #从远程master分支拉取到本地localbranch, 如果localbranch不存在就创建
+```
+
+##### 11 git commit 和 git add 一起用
+``` sh
+#1 git add . && git commit -m "test" && git push origin dev:dev
+#2 git commit -am "test" && git push origin dev:dev 这个用要注意
+```
+
+##### 12 查看所有的提交版本,不管是否回退或者分支回并什么的，都可以看
+``` sh
+git reflog #看到所有的版本号与注释，可以git reset --hard 后面的版本号
+           #这个命令很重要
 ```
