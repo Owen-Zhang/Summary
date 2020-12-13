@@ -19,3 +19,17 @@
 ``` sh
 git log -p #可以看详细的修改内容, 其中 按 【j】向下，按【k】向上 看 【q】退出
 ```
+
+##### 3 打tag
+``` sh
+git tag -a v1 -m "正式版本"  版本号 #给程序打标签， 版本号可要可不要，加上就表示在哪个提交后打的标签，不加就表示当前 如: git tag -a v1 -m "正式版" 4sfasf23
+
+git push origin v1.0 # push单个tag，命令格式为：git push origin [tagname]
+git push --tags #push所有tag
+```
+
+##### 4 show 查看相关新增/修改的具体内容,也可以看tag信息
+``` sh
+git show 版本号 #版本号: 是git log 里面很长的那一段字符
+```
+
