@@ -57,8 +57,13 @@ git init test #本地创建test文件夹并加上git相关的初始化信息
 git remote add origin http://github.com/Owen-Zhang/test.git #将本地仓库和线上仓库关联,origin是git默认远程标识,也可以改成其它
 ```
 
-
 ##### 8 将本地commit后的代码推到远程
 ``` sh
-git push -u origin master #将本地代码推到远程的master分支上,origin是git remote关联时取的名字
+##### git push <远程主机名> <本地分支名>:<远程分支名> ###### 远程主机名:origin
+git push origin master:master #标准push方式：origin:远程主机名 master(第一个):本地分支名,master(第二个):远程分支名
+git push origin master #如果省略远程分支名，则表示将本地分支推送与之存在"追踪关系"的远程分支（通常两者同名），如果该远程分支不存在，则会被新建
+git push origin # 如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。
+git push #如果当前分支只有一个追踪分支，那么主机名都可以省略。
+
+git push -u origin master #如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。
 ```
