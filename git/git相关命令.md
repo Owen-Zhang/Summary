@@ -14,3 +14,8 @@
    git reset --soft head~1 将上一次提交的代码返回到git add 之后，git commit 之前的状态
    git reset --hard head~1 将上一次提交的代码全部删除,直接返回到修改之前的代码状态(此方法慎用)
 ```
+
+##### 2日志内容查看
+``` sh
+git log -p #可以看详细的修改内容, 其中 按 【j】向下，按【k】向上 看 【q】退出
+```
