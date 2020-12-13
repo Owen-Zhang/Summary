@@ -44,3 +44,16 @@ git checkout -b mybranch #创建并切换分支(如果分支不存在就创建),
 git branch -D 分支名 # 删除本地分支,但有一个前提必须先git branch 到其它分支
 git push origin --delete 分支名  #删除远程分支
 ```
+
+##### 6 合并分支
+``` sh
+git checkout master #切换到要合并到的目的地分支
+git merge dev       #将当前的dev分支合并到当前分支(master)上
+```
+
+##### 7 将本地仓库和远程仓库关联
+``` sh
+git init test #本地创建test文件夹并加上git相关的初始化信息
+git remote add origin http://github.com/Owen-Zhang/test.git #将本地仓库和线上仓库关联,origin是git默认远程标识,也可以改成其它
+```
+
