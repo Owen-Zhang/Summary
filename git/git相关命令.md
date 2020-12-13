@@ -34,3 +34,11 @@ git push --tags #push所有tag
 git show 版本号 #版本号: 是git log 里面很长的那一段字符
 ```
 
+#### 5 查看远程分支/创建分支/切换分支/删除本地分支/删除远程分支
+``` sh
+git branch -r  #查看远程分支
+git branch dev #创建分支,如果存在会报错
+git checkout  dev #切换分支, 如果切换不存在的分支会报错
+git branch -D 分支名 # 删除本地分支,但有一个前提必须先git branch 到其它分支
+git push origin --delete 分支名  #删除远程分支
+```
