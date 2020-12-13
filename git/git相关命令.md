@@ -38,10 +38,11 @@ git show 版本号 #版本号: 是git log 里面很长的那一段字符
 ``` sh
 git branch -r  #查看远程分支
 git branch dev #创建分支,如果存在会报错
-git checkout  dev #切换分支, 如果切换不存在的分支会报错
+git checkout  dev #切换分支, 如果切换不存在的分支会报错,切换分支前最好将当前分支的代码提交
 git checkout 版本号 #可以切换到某个版本号 ---这个要注意
 git checkout -b mybranch #创建并切换分支(如果分支不存在就创建), mybranch分支名
-git branch -D 分支名 # 删除本地分支,但有一个前提必须先git branch 到其它分支
+git branch -d 分支名 # 删除本地分支,但有一个前提必须先git branch 到其它分支,如果有未合并的代码时会报错
+git branch -D 分支名 # 删除本地分支,但有一个前提必须先git branch 到其它分支,不管是否有未合并的代码直接删除
 git push origin --delete 分支名  #删除远程分支
 ```
 
@@ -66,4 +67,16 @@ git push origin # 如果当前分支与远程分支之间存在追踪关系，�
 git push #如果当前分支只有一个追踪分支，那么主机名都可以省略。
 
 git push -u origin master #如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。
+```
+
+##### 9 .gitignore忽略文件
+``` sh
+* #任意字符
+*.property #排除以property结尾的文件
+!b.property #包含b.property文件
+dir/ #dir目录下面的所有文件目录都排除
+dir/*.txt #排除dir目录下面(一级目录)的txt文件
+dir/*/*.txt #排除dir目录下第三级目录里txt文件
+dir/**/*.txt #排除dir目录下任意目录下的txt文件
+
 ```
