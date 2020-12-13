@@ -10,9 +10,11 @@
    返回到git add 之前，要将修改丢掉就用git checkout
 
 3: 已经用 git commit 提交了代码
-   git reset head~1 将上一次提交的代码返回到git add 之前(此常用)
+   git reset head~1 将上一次提交的代码返回到git add 之前(此常用), 1可以是n
    git reset --soft head~1 将上一次提交的代码返回到git add 之后，git commit 之前的状态
    git reset --hard head~1 将上一次提交的代码全部删除,直接返回到修改之前的代码状态(此方法慎用)
+
+   git reset --hard 版本号 #一次性回退到某个版本
 ```
 
 ##### 2日志内容查看
