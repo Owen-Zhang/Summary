@@ -44,3 +44,5 @@ git checkout -b mybranch #创建并切换分支(如果分支不存在就创建),
 git branch -D 分支名 # 删除本地分支,但有一个前提必须先git branch 到其它分支
 git push origin --delete 分支名  #删除远程分支
 ```
+
+aaaaa
