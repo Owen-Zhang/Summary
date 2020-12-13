@@ -39,6 +39,8 @@ git show 版本号 #版本号: 是git log 里面很长的那一段字符
 git branch -r  #查看远程分支
 git branch dev #创建分支,如果存在会报错
 git checkout  dev #切换分支, 如果切换不存在的分支会报错
+git checkout 版本号 #可以切换到某个版本号 ---这个要注意
+git checkout -b mybranch #创建并切换分支(如果分支不存在就创建), mybranch分支名
 git branch -D 分支名 # 删除本地分支,但有一个前提必须先git branch 到其它分支
 git push origin --delete 分支名  #删除远程分支
 ```
