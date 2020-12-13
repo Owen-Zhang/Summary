@@ -41,6 +41,8 @@ git branch dev #创建分支,如果存在会报错
 git checkout  dev #切换分支, 如果切换不存在的分支会报错,切换分支前最好将当前分支的代码提交
 git checkout 版本号 #可以切换到某个版本号 ---这个要注意
 git checkout -b mybranch #创建并切换分支(如果分支不存在就创建), mybranch分支名
+git checkout -b 本地分支名 origin/远程分支名 #从远程拉取新的分支并切换到新的分支(将会自动创建一个新的本地分支，并与指定的远程分支关联起来)
+
 git branch -d 分支名 # 删除本地分支,但有一个前提必须先git branch 到其它分支,如果有未合并的代码时会报错
 git branch -D 分支名 # 删除本地分支,但有一个前提必须先git branch 到其它分支,不管是否有未合并的代码直接删除
 git push origin --delete 分支名  #删除远程分支
