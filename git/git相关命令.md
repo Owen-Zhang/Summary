@@ -80,3 +80,8 @@ dir/*/*.txt #排除dir目录下第三级目录里txt文件
 dir/**/*.txt #排除dir目录下任意目录下的txt文件
 
 ```
+
+##### 10 拉取
+``` sh
+git pull origin master:localbranch #从远程master分支拉取到本地localbranch, 如果localbranch不存在就创建
+```
