@@ -34,6 +34,8 @@ git log --oneline #只显示提交的版本号和说明,比较实用
 ``` sh
 git tag -a v1 -m "正式版本"  版本号 #给程序打标签， 版本号可要可不要，加上就表示在哪个提交后打的标签，不加就表示当前 如: git tag -a v1 -m "正式版" 4sfasf23
 
+git tag -d v1 #删除v1 tag
+
 git push origin v1.0 # push单个tag，命令格式为：git push origin [tagname]
 git push --tags #push所有tag
 ```
@@ -47,6 +49,8 @@ git show 版本号 #版本号: 是git log 里面很长的那一段字符
 ``` sh
 git branch -r  #查看远程分支
 git branch dev #创建分支,如果存在会报错
+git branch 分支名 已存在的版本号 #可以在某个版本的时刻创建分支
+
 git checkout  dev #切换分支, 如果切换不存在的分支会报错,切换分支前最好将当前分支的代码提交
 git checkout 版本号 #可以切换到某个版本号 ---这个要注意
 git checkout -b mybranch #创建并切换分支(如果分支不存在就创建), mybranch分支名
@@ -107,4 +111,35 @@ git pull origin master:localbranch #从远程master分支拉取到本地localbra
 ``` sh
 git reflog #看到所有的版本号与注释，可以git reset --hard 后面的版本号
            #这个命令很重要
+```
+
+
+##### 13 分支重命名
+``` sh
+git branch -m master master2 #将master分支的名字从master改为master2
+```
+
+##### 14保存现场
+``` sh
+#代码在没有提交(commit)的情况下是不允许切换分支(两个分支没有在同一个阶段)
+#如果还没有将一个功能开发完成就要切换分支：建议 1保存现场(stash), 2切换
+
+git stash save "现场的名称" #保存现场(git commit 之前)
+git checkout master #切换到其它分支做其它事情
+git checkout dev #又要回到原来的分支
+git stash list #查看保存的现场列表(当有多个现场保存时)
+git stash pop #恢复第一个保存的现场(而且是恢复到工作区，没git add .之前)
+
+```
+
+##### 15 查看某个文件的提交情况
+``` sh
+ git blame .\git\git相关命令.md  #git blame 文件名
+```
+
+
+##### 16 ssh 配制
+``` sh
+#本地私钥，远程公钥
+ssh-keygen #在bash中生成私钥,windows默认会生成在用户->当前登陆用户名-.ssh里
 ```
