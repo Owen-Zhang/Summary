@@ -144,3 +144,4 @@ git stash pop #恢复第一个保存的现场(而且是恢复到工作区，没g
 ssh-keygen #在bash中生成私钥,windows默认会生成在用户->当前登陆用户名-.ssh里
 ```
 
+test
