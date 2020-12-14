@@ -148,3 +148,19 @@ ssh-keygen #在bash中生成私钥,windows默认会生成在用户->当前登陆
 git clone git@github.com:Owen-Zhang/Summary.git #clone代码时就用ssh的方式
 git push origin master:master #提交时就不用输入用户名和密码了(相当于私钥加密，公钥解密)
 ```
+
+##### 17 查看远程地址、分支、以及当前head对应的分支
+``` sh
+git remote show origin 
+   #* remote origin
+   #Fetch URL: git@github.com:Owen-Zhang/Summary.git
+   #Push  URL: git@github.com:Owen-Zhang/Summary.git
+   #HEAD branch: master
+   #Remote branches:
+   #   dev    tracked
+   #   master tracked
+   #Local branch configured for 'git pull':
+   #   master merges with remote master
+   #Local ref configured for 'git push':
+   #   master pushes to master (up to date)
+```
