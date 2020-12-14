@@ -138,10 +138,13 @@ git stash pop #恢复第一个保存的现场(而且是恢复到工作区，没g
 ```
 
 
-##### 16 ssh 配制
+##### 16 ssh 配制，提交代码不用输入用户名和密码
 ``` sh
 #本地私钥，远程公钥
 ssh-keygen #在bash中生成私钥,windows默认会生成在用户->当前登陆用户名-.ssh里
-```
+           #会生成两个文件，一个公钥，一个私钥, github.com -> setting -> ssh and gpg keys里
+           #【new ssh key】将公钥放在此处
 
-test
+git clone git@github.com:Owen-Zhang/Summary.git #clone代码时就用ssh的方式
+git push origin master:master #提交时就不用输入用户名和密码了(相当于私钥加密，公钥解密)
+```
