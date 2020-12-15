@@ -180,13 +180,16 @@ git branch -av
 
 ##### 19 获取本地没有的远程新分支
 ``` sh
-#1 拉取
+#1.1 拉取
 git pull 
 #From github.com:Owen-Zhang/Summary
 # * [new branch]      dev2       -> origin/dev2
 #会拉取远程的新分支到本地跟踪分支
 
-#2 创建本地分支
+#1.2 创建本地分支
 git checkout -b dev2 origin/dev2
 #以origin/dev2创建新的分支dev2,并切换到dev2
+
+#2 直接拉取代码创建本地分支,不切换分支
+git pull origin dev8:dev8 # dev8(远程分支):dev8(本地分支) 
 ```
