@@ -167,5 +167,10 @@ git remote show origin
 
 ##### 18 查看本地和远程分支情况
 ``` sh
-git branch -av #
+git branch -av 
+   #dev2                  3863fe6 fix  #本地分支，远程无
+   #* master              60cd4b3 [ahead 1] #查看分支情况，本地分支,当前代码分支
+   #remotes/origin/HEAD   -> origin/master #远程head
+   #remotes/origin/dev    cd86cb2 fix      #远程分支dev
+   #remotes/origin/master 3863fe6 fix      #远程master分支
 ```
