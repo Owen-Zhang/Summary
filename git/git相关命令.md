@@ -164,3 +164,8 @@ git remote show origin
    #Local ref configured for 'git push':
    #   master pushes to master (up to date)
 ```
+
+##### 18 查看本地和远程分支情况
+``` sh
+git branch -av #
+```
