@@ -58,7 +58,9 @@ git checkout -b 本地分支名 origin/远程分支名 #从远程拉取新的分
 
 git branch -d 分支名 # 删除本地分支,但有一个前提必须先git branch 到其它分支,如果有未合并的代码时会报错
 git branch -D 分支名 # 删除本地分支,但有一个前提必须先git branch 到其它分支,不管是否有未合并的代码直接删除
-git push origin --delete 分支名  #删除远程分支
+git push origin --delete 分支名  #删除远程分支,同时会删除本地跟踪分支如:remote/origin/dev
+
+git branch -av #查看本地分支和远程本地跟踪分支
 ```
 
 ##### 6 合并分支
@@ -167,10 +169,24 @@ git remote show origin
 
 ##### 18 查看本地和远程分支情况
 ``` sh
+#如果没有更新(git pull)情况下，本地远程跟踪分支可能和远程的分支有区别，更新会操持一致
 git branch -av 
    #dev2                  3863fe6 fix  #本地分支，远程无
    #* master              60cd4b3 [ahead 1] #查看分支情况，本地分支,当前代码分支
-   #remotes/origin/HEAD   -> origin/master #远程head
-   #remotes/origin/dev    cd86cb2 fix      #远程分支dev
-   #remotes/origin/master 3863fe6 fix      #远程master分支
+   #remotes/origin/HEAD   -> origin/master #本地远程跟踪head
+   #remotes/origin/dev    cd86cb2 fix      #本地远程跟踪分支dev
+   #remotes/origin/master 3863fe6 fix      #本地远程跟踪master分支
+```
+
+##### 19 获取本地没有的远程新分支
+``` sh
+#1 拉取
+git pull 
+#From github.com:Owen-Zhang/Summary
+# * [new branch]      dev2       -> origin/dev2
+#会拉取远程的新分支到本地跟踪分支
+
+#2 创建本地分支
+git checkout -b dev2 origin/dev2
+#以origin/dev2创建新的分支dev2,并切换到dev2
 ```
