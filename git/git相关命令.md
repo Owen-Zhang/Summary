@@ -193,3 +193,11 @@ git checkout -b dev2 origin/dev2
 #2 直接拉取代码创建本地分支,不切换分支
 git pull origin dev8:dev8 # dev8(远程分支):dev8(本地分支) 
 ```
+
+##### 20 清理无效的跟踪分支
+``` sh
+#无效的跟踪分支:那些本地不需要的remote/origin/dev等,没有和本地分支关联的跟踪分支
+git remote prune origin --dry-run # 查看有哪些无效的跟踪分支
+git remote prune origin #清理无效的跟踪分支
+```
+
