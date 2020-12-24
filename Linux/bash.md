@@ -669,3 +669,73 @@ sudo dpkg -i c.deb #c.deb文件名
 ctrl + A # 行首
 ctrl + E #行末
 ```
+
+##### 48 chmod（修改文件权限）
+``` sh
+chmod +x 文件名 #给文件增加运行权限(对所有用户有效)
+chmod -x 文件名 #给文件减少运行权限(对所有用户有效)
+chmod +r 文件名 #给文件增加读权限(对所有用户有效)
+chmode 755 文件名 # r:读取权限,数字代号为“4”; w:写入权限,数字代号为“2”；x:执行或切换权限，数字代号为“1”; -:不具任何权限，数字代号为“0”
+
+who
+u:用户
+g:组
+o:其它
+a:所有用户(默认)
+
+chmod u=rwx,g=rx,o=x 文件名 #给【u】用户读写运行文件的权限; 给【组】读和运行权限；给【其它】运行权限
+
+```
+
+##### 49 df 文件系统上的大小、使用空间和可用空间
+``` sh
+df -h  #大小、使用空间和可用空间
+```
+
+##### 50 free 查看内存使用总体情况
+``` sh
+free -h
+#               total        used        free      shared  buff/cache   available
+# Mem:           2.9G        646M        1.3G        9.1M        1.0G        2.0G
+# Swap:            0B          0B          0B
+``` 
+
+##### 51 groups 查看用户属于哪个组
+``` sh
+groups huige #显示huige属于哪个组
+```
+
+##### 52 history
+``` sh
+history  #查看历史shell命令
+!数字    #数字表示那一行的编号,相当于运行那个命令 
+!!      #运行上一个命令
+```
+
+##### 53 kill 杀死进程
+``` sh
+kill -9 进程id  #强制杀死进程
+``` 
+
+##### 54 sh scp 运程连接与远程传输文件
+``` sh
+ssh root@192.168.0.110 #通过root连接到110机器
+scp 11.conf root@192.168.0.110:/root/test/ #将11.conf文件复制到110机器上的root/test目录下 
+```
+
+##### 55 top 查看进程信息
+``` sh
+top  #可以查看所有进程的内存和cpu使用情况
+``` 
+
+##### 56 查看内核版本信息
+``` sh
+cat /proc/version 
+# Linux version 3.10.0-693.el7.x86_64 (builder@kbuilder.dev.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-16) (GCC) ) #1 SMP Tue Aug 22 21:09:27 UTC 2017
+
+cat /etc/redhat-release #查看redhat版本信息
+```
+
+
+
+

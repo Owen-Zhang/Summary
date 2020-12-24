@@ -61,3 +61,13 @@ client 返回 ACK 的包后，server 会进入一个新的叫 accept 的队列�
 LISTEN 状态: Recv-Q 表示的当前等待服务端调用 accept 完成三次握手的 listen backlog 数值，也就是说，当客户端通过 connect() 去连接正在 listen() 的服务端时，这些连接会一直处于这个 queue 里面直到被服务端 accept()；Send-Q 表示的则是最大的 listen backlog 数值，这就就是上面提到的 min(backlog, somaxconn) 的值。
 其余状态: 非 LISTEN 状态之前理解的没有问题。Recv-Q 表示 receive queue 中的 bytes 数量；Send-Q 表示 send queue 中的 bytes 数值。
 ```
+
+##### 4 iftop  查看某个ip的流量使用情况
+``` sh
+iftop -i 网卡名 -n -P # 查看ip流量使用情况 注意大小写
+                     # -i设定监测的网卡
+                     # -B 以bytes为单位显示流量(默认是bits)
+                     # -n使host信息默认直接都显示IP
+                     # -N使端口信息默认直接都显示端口号
+                     # -P使host信息及端口信息默认就都显示;
+```
