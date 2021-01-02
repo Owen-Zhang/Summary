@@ -806,3 +806,17 @@ lsof -u root | wc -l # 显示root用户打开的文件数量
 lsof -i -a -u root 
 lsof -i -a -u ^root #排除root用户
 ```
+
+##### 59 linux环境变量
+``` sh
+#1 查看当前系统的环境变量
+env 
+
+#2 设置环境变量的位置
+cat /etc/profile 
+cat .bash_profile #这个只对某个用户有效(root/huige),在用户的根目录下
+
+# 3 刷新环境变量
+source /etc/profile
+
+```
