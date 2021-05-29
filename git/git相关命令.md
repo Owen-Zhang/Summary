@@ -201,3 +201,8 @@ git remote prune origin --dry-run # 查看有哪些无效的跟踪分支
 git remote prune origin #清理无效的跟踪分支
 ```
 
+
+##### 21 同步远程没有的分支到本地
+``` sh
+git pull -p
+```
