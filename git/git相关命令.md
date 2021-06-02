@@ -212,3 +212,9 @@ git pull -p
 #先切换到要查看的分支上
 git branch --merged
 ```
+
+##### 23 列出了尚未合并的分支
+``` sh
+#先切换到要查看的分支上
+git branch --no-merged
+```
