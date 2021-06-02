@@ -206,3 +206,9 @@ git remote prune origin #清理无效的跟踪分支
 ``` sh
 git pull -p
 ```
+
+##### 22 查看当前分支是从哪些分支合并过来的
+``` sh
+#先切换到要查看的分支上
+git branch --merged
+```
