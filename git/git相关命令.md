@@ -218,3 +218,8 @@ git branch --merged
 #先切换到要查看的分支上
 git branch --no-merged
 ```
+##### 24 强制用本地分支代码覆盖远程分支代码
+``` sh
+git push -f origin master:master
+在回退代码版本时特别有用
+```
